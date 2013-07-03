@@ -1,7 +1,8 @@
 ## Task 2
-def dict2list(dct, keylist): {}
+def dict2list(dct, keylist): return [dct[i] for i in keylist]
 
-def list2dict(L, keylist): {}
+def list2dict(L, keylist): return {keylist[i]:L[i] for i in list(range(len(L)))}
+
 
 ## Task 3
 def listrange2dict(L):
