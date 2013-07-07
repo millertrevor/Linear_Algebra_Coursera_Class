@@ -22,7 +22,18 @@ def makeInverseIndex(strlist):
     Note that to test your function, you are welcome to use the files stories_small.txt
       or stories_big.txt included in the download.
     """
-    return ...
+    dict={}
+    index=0
+    for line in strlist:
+      a = line.split()
+      for word in a:
+       if word in dict:
+           dict[word].add(index)
+       else:
+         dict[word] = {index}
+      index = index+1
+    
+    return dict
 
 ## Task 5
 def orSearch(inverseIndex, query):
@@ -30,7 +41,13 @@ def orSearch(inverseIndex, query):
     Input: an inverse index, as created by makeInverseIndex, and a list of words to query
     Output: the set of document ids that contain _any_ of the specified words
     """
-    return ...
+    output=set()
+    
+    for word in query:
+        output = output | inverseIndex[word]
+
+        
+    return output
 
 ## Task 6
 def andSearch(inverseIndex, query):
@@ -38,4 +55,10 @@ def andSearch(inverseIndex, query):
     Input: an inverse index, as created by makeInverseIndex, and a list of words to query
     Output: the set of all document ids that contain _all_ of the specified words
     """
-    return ... 
+    output=inverseIndex[query[0]]
+    
+    for word in query:
+        output = output & inverseIndex[word]
+
+        
+    return output 
