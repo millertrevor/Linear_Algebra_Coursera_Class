@@ -16,7 +16,12 @@ def vec_select(veclist, k):
     >>> vec_select([v1, v2, v3, v4], 'a') == [Vec(D,{'b': 1}), Vec(D,{'b': 2})]
     True
     '''
-    pass
+    returnArray=[]
+    for vec in veclist:
+        if vec[k]==0:
+            returnArray.append(vec)
+
+    return returnArray
 
 def vec_sum(veclist, D): 
     '''
@@ -28,7 +33,13 @@ def vec_sum(veclist, D):
     >>> vec_sum([v1, v2, v3, v4], D) == Vec(D, {'b': 13, 'a': 11})
     True
     '''
-    pass
+    returnVec = Vec(D,{})
+    for d in D:
+        for vec in veclist:
+            returnVec[d] = returnVec[d]+vec[d]
+
+    return returnVec
+        
 
 def vec_select_sum(veclist, k, D): 
     '''
@@ -40,7 +51,8 @@ def vec_select_sum(veclist, k, D):
     >>> vec_select_sum([v1, v2, v3, v4], 'a', D) == Vec(D, {'b': 3})
     True
     '''
-    pass
+    inputList = vec_select(veclist,k)
+    return vec_sum(inputList,D)
 
 
 
